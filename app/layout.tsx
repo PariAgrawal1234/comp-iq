@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import Navbar from "@/components/ui/Navbar";
+import PageTransition from "@/components/ui/PageTransition";
 
 export const metadata: Metadata = {
   title: "CompIQ",
@@ -13,13 +14,16 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
 
+
   return (
     <html lang="en">
       <body className="bg-slate-950">
 
         <Navbar />
-
-        {children}
+        <PageTransition>
+          {children}
+        </PageTransition>
+        
 
       </body>
     </html>

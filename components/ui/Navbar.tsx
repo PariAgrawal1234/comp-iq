@@ -1,49 +1,44 @@
+"use client";
+
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 export default function Navbar() {
+  const pathname = usePathname();
+
+  const links = [
+    { name: "Home", href: "/" },
+    { name: "Salaries", href: "/salaries" },
+    { name: "Compare", href: "/compare" },
+  ];
+
   return (
     <nav className="border-b border-slate-800 bg-slate-950 text-white">
+      <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
 
-      <div className="max-w-7xl mx-auto px-6 py-4">
+        <Link href="/" className="text-2xl font-bold">
+          CompIQ
+        </Link>
 
-        <div className="flex flex-col md:flex-row md:justify-between md:items-center gap-4">
+        <div className="flex gap-6">
 
-          <Link
-            href="/"
-            className="text-2xl font-bold"
-          >
-            CompIQ
-          </Link>
-
-          <div className="flex flex-wrap gap-6">
-
+          {links.map((link)=>(
             <Link
-              href="/"
-              className="text-slate-300 hover:text-white"
+              key={link.href}
+              href={link.href}
+              className={`transition ${
+                pathname === link.href
+                  ? "text-blue-400 font-semibold"
+                  : "text-slate-300 hover:text-white"
+              }`}
             >
-              Home
+              {link.name}
             </Link>
-
-            <Link
-              href="/salaries"
-              className="text-slate-300 hover:text-white"
-            >
-              Salaries
-            </Link>
-
-            <Link
-              href="/compare"
-              className="text-slate-300 hover:text-white"
-            >
-              Compare
-            </Link>
-
-          </div>
+          ))}
 
         </div>
 
       </div>
-
     </nav>
   );
 }

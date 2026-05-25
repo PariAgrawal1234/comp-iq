@@ -1,10 +1,12 @@
 import { salaryData } from "@/data/salaryData";
+import CompChart from "@/components/charts/CompChart";
 
 type Props = {
   params: Promise<{
     id: string;
   }>;
 };
+
 
 export default async function CompanyPage({
   params,
@@ -74,6 +76,13 @@ export default async function CompanyPage({
 
         </div>
 
+        <CompChart
+          company1="Base"
+          company2="Equity"
+          value1={company.base}
+          value2={company.equity}
+        />
+        
       </div>
 
     </main>

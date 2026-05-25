@@ -107,7 +107,7 @@ export default function ComparePage() {
                 <td className="p-4">Equity</td>
 
                 <td className="p-4">
-                  ₹₹{data1?.base ? data1.base/100000 : "-"}L
+                  ₹{data1?.base ? data1.base/100000 : "-"}L
                 </td>
 
                 <td className="p-4">
@@ -132,6 +132,34 @@ export default function ComparePage() {
  : "-"}
                 </td>
               </tr>
+
+              {data1 && data2 && (
+                <tr className="border-t border-slate-800">
+
+                  <td className="p-4">
+                    Difference
+                  </td>
+
+                  <td
+                    colSpan={2}
+                    className="p-4 text-blue-400 font-semibold"
+                  >
+                    {(
+                      (
+                        Math.abs(
+                          data1.totalComp - data2.totalComp
+                        ) /
+                        Math.min(
+                          data1.totalComp,
+                          data2.totalComp
+                        )
+                      ) * 100
+                    ).toFixed(1)}
+                    % difference
+                  </td>
+
+                </tr>
+              )}
 
             </tbody>
 

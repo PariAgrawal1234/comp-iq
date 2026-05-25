@@ -1,4 +1,5 @@
 import StatCard from "../components/ui/StatCard";
+import Link from "next/link";
 
 export default function Home() {
   return (
@@ -21,15 +22,21 @@ export default function Home() {
             locations and experience levels.
           </p>
 
-          <div className="flex gap-4">
+          <div className="flex flex-wrap gap-4">
 
-            <button className="bg-white text-black px-6 py-3 rounded-lg font-medium">
+            <Link
+              href="/salaries"
+              className="bg-white text-black px-6 py-3 rounded-lg font-medium hover:scale-105 transition"
+            >
               Explore Salaries
-            </button>
+            </Link>
 
-            <button className="border border-slate-700 px-6 py-3 rounded-lg">
+            <Link
+              href="/compare"
+              className="border border-slate-700 px-6 py-3 rounded-lg hover:bg-slate-800 transition"
+            >
               Compare Companies
-            </button>
+            </Link>
 
           </div>
 

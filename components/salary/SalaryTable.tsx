@@ -102,6 +102,39 @@ export default function SalaryTable() {
 
       </div>
 
+      <div className="flex flex-wrap gap-3 mb-6">
+
+        {level !== "All" && (
+          <button
+            onClick={() => setLevel("All")}
+            className="px-4 py-2 rounded-full bg-slate-800 text-sm hover:bg-slate-700"
+          >
+            {level} ×
+          </button>
+        )}
+
+        {location !== "All" && (
+          <button
+            onClick={() => setLocation("All")}
+            className="px-4 py-2 rounded-full bg-slate-800 text-sm hover:bg-slate-700"
+          >
+            {location} ×
+          </button>
+        )}
+
+        {sort !== "" && (
+          <button
+            onClick={() => setSort("")}
+            className="px-4 py-2 rounded-full bg-slate-800 text-sm hover:bg-slate-700"
+          >
+            {sort === "high"
+              ? "High → Low"
+              : "Low → High"} ×
+          </button>
+        )}
+
+      </div>
+
       <div className="overflow-x-auto rounded-xl border border-slate-800">
 
         <table className="w-full">
@@ -128,11 +161,37 @@ export default function SalaryTable() {
 
           <td className="p-4">
 
-          <Link
-          href={`/companies/${salary.company.toLowerCase()}`}
-          className="text-blue-400 hover:underline">
-          {salary.company}
-          </Link>
+            <div className="flex items-center gap-3">
+
+              <div
+                className="
+                w-9
+                h-9
+                rounded-full
+                bg-blue-500
+                flex
+                items-center
+                justify-center
+                font-bold
+                text-sm
+                "
+              >
+                {salary.company[0]}
+              </div>
+
+              <Link
+                href={`/companies/${salary.company.toLowerCase()}`}
+                className="
+                text-blue-400
+                hover:text-blue-300
+                hover:underline
+                cursor-pointer
+                "
+              >
+                {salary.company}
+              </Link>
+
+            </div>
 
           </td>
 
