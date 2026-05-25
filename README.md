@@ -75,7 +75,7 @@ Libraries:
 
 ### Company Details
 
-![Company Page](./public/Compare-Comps2.png)
+![Company Page](./public/Company-Page.png)
 
 ## Architecture Decisions
 
