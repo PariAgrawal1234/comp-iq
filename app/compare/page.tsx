@@ -146,6 +146,31 @@ export default function ComparePage() {
   />
 )}
 
+{data1 && data2 && (
+  <div className="bg-slate-900 border border-slate-800 rounded-xl p-6 mt-8">
+
+    <h2 className="text-xl font-semibold mb-4">
+      Compensation Insight
+    </h2>
+
+    <p className="text-slate-300">
+
+      {data1.totalComp > data2.totalComp
+        ? `${company1} compensation is ${(
+            ((data1.totalComp - data2.totalComp) /
+              data2.totalComp) *
+            100
+          ).toFixed(1)}% higher than ${company2}, primarily driven by stronger equity allocation.`
+        : `${company2} compensation is ${(
+            ((data2.totalComp - data1.totalComp) /
+              data1.totalComp) *
+            100
+          ).toFixed(1)}% higher than ${company1}, primarily driven by compensation structure differences.`}
+
+    </p>
+
+  </div>
+)}
         </div>
 
       </div>

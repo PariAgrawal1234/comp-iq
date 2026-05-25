@@ -119,29 +119,50 @@ export default function SalaryTable() {
           </thead>
 
           <tbody>
+          {filteredData.length > 0 ? (
 
-            {filteredData.map((salary) => (
-              <tr
-                key={salary.id}
-                className="border-t border-slate-800 hover:bg-slate-900">
-                <td className="p-4">
-                <Link
-                    href={`/companies/${salary.company.toLowerCase()}`}
-                    className="text-blue-400 hover:text-blue-300 hover:underline">
-                    {salary.company}
-                </Link>
-                </td>
-                <td className="p-4">{salary.role}</td>
-                <td className="p-4">{salary.level}</td>
-                <td className="p-4">{salary.location}</td>
-                <td className="p-4">
-                  ₹{(salary.totalComp / 100000).toFixed(1)}L
-                </td>
-              </tr>
-            ))}
+          filteredData.map((salary)=>(
+          <tr
+          key={salary.id}
+          className="border-t border-slate-800 hover:bg-slate-900">
+
+          <td className="p-4">
+
+          <Link
+          href={`/companies/${salary.company.toLowerCase()}`}
+          className="text-blue-400 hover:underline">
+          {salary.company}
+          </Link>
+
+          </td>
+
+          <td className="p-4">{salary.role}</td>
+          <td className="p-4">{salary.level}</td>
+          <td className="p-4">{salary.location}</td>
+
+          <td className="p-4">
+          ₹{(salary.totalComp/100000).toFixed(1)}L
+          </td>
+
+          </tr>
+          ))
+
+          ) : (
+
+          <tr>
+
+          <td
+          colSpan={5}
+          className="text-center p-10 text-slate-400"
+          >
+          No matching compensation data found
+          </td>
+
+          </tr>
+
+          )}
 
           </tbody>
-
         </table>
 
       </div>

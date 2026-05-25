@@ -34,13 +34,13 @@ export default function CompChart({
   ];
 
   return (
-    <div className="bg-slate-900 rounded-xl p-6 mt-8 h-[350px]">
+    <div className="bg-slate-900 rounded-xl p-6 mt-8 w-full min-h-[400px]">
 
       <h2 className="text-xl font-semibold mb-6">
         Total Compensation Comparison
       </h2>
 
-      <ResponsiveContainer width="100%" height="100%">
+      <ResponsiveContainer width="100%" height={300}>
         <BarChart data={data}>
           <XAxis
   dataKey="name"
