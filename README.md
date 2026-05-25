@@ -9,6 +9,9 @@ Unlike traditional salary listing platforms, CompIQ prioritizes:
 - Structured salary comparison
 - Company compensation insights
 
+## Live Demo
+Deployed Application: https://comp-iq02.vercel.app/
+
 ## Research Observations
 
 | Feature | Levels.fyi | 6figr | AmbitionBox | Glassdoor | Implemented |
@@ -67,7 +70,7 @@ Libraries:
 
 ### Salary Explorer
 
-![Salary Explorer](./public/Salary-Explorer.png)
+![Salary Explorer](./image-1.png)
 
 ### Compare Compensation
 
@@ -75,7 +78,7 @@ Libraries:
 
 ### Company Details
 
-![Company Page](./public/Company-Page.png)
+![Company Page](./image.png)
 
 ## Architecture Decisions
 
