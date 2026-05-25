@@ -59,6 +59,24 @@ Libraries:
 - TanStack Table
 - Framer Motion
 
+## Screenshots
+
+### Home Page
+
+![Home](./public/Home.png)
+
+### Salary Explorer
+
+![Salary Explorer](./public/Salary-Explorer.png)
+
+### Compare Compensation
+
+![Compare](./public/Compare-Comps.png)
+
+### Company Details
+
+![Company Page](./public/Compare-Comps2.png)
+
 ## Architecture Decisions
 
 Data hierarchy:
