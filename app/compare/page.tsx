@@ -5,16 +5,14 @@ import { salaryData } from "@/data/salaryData";
 import CompChart from "@/components/charts/CompChart";
 
 export default function ComparePage() {
-  const [company1, setCompany1] = useState("Google");
-  const [company2, setCompany2] = useState("Amazon");
+  const [selection1, setSelection1] = useState(0);
+  const [selection2, setSelection2] = useState(1);
 
-  const data1 = salaryData.find(
-    (item) => item.company === company1
-  );
+  const data1 = salaryData[selection1];
+  const data2 = salaryData[selection2];
 
-  const data2 = salaryData.find(
-    (item) => item.company === company2
-  );
+  const company1 = `${data1.company} (${data1.level}, ${data1.location})`;
+  const company2 = `${data2.company} (${data2.level}, ${data2.location})`;
 
   return (
     <main className="min-h-screen bg-slate-950 text-white p-8">
@@ -29,34 +27,58 @@ export default function ComparePage() {
           Compare compensation structures across companies.
         </p>
 
-        <div className="grid md:grid-cols-2 gap-4 mb-8">
+        <div className="grid md:grid-cols-2 gap-6 mb-8">
 
           <select
-            value={company1}
-            onChange={(e)=>setCompany1(e.target.value)}
-            className="p-4 rounded-lg bg-slate-900 border border-slate-800"
+          value={selection1}
+          onChange={(e)=>
+          setSelection1(Number(e.target.value))}
+          className="p-4 rounded-lg bg-slate-900 border border-slate-800">
+          {salaryData.map((item,index)=>(
+
+          <option
+          key={item.id}
+          value={index}
           >
-            {salaryData.map((item)=>(
-              <option
-                key={item.id}
-              >
-                {item.company}
-              </option>
-            ))}
+
+          {item.company}
+          |
+          {item.level}
+          |
+          {item.location}
+
+          </option>
+
+          ))}
+
           </select>
 
+
           <select
-            value={company2}
-            onChange={(e)=>setCompany2(e.target.value)}
-            className="p-4 rounded-lg bg-slate-900 border border-slate-800"
+          value={selection2}
+          onChange={(e)=>
+          setSelection2(Number(e.target.value))
+          }
+          className="p-4 rounded-lg bg-slate-900 border border-slate-800"
           >
-            {salaryData.map((item)=>(
-              <option
-                key={item.id}
-              >
-                {item.company}
-              </option>
-            ))}
+
+          {salaryData.map((item,index)=>(
+
+          <option
+          key={item.id}
+          value={index}
+          >
+
+          {item.company}
+          |
+          {item.level}
+          |
+          {item.location}
+
+          </option>
+
+          ))}
+
           </select>
 
         </div>
