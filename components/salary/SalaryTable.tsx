@@ -21,6 +21,7 @@ export default function SalaryTable() {
       location === "All" ||
       salary.location === location;
 
+
     return (
       matchesSearch &&
       matchesLevel &&
@@ -40,6 +41,24 @@ export default function SalaryTable() {
     );
   }
 
+  const uniqueLevels = [
+      "All",
+      ...new Set(
+        salaryData.map(
+          (item) => item.level
+        )
+      )
+    ];
+
+const uniqueLocations = [
+      "All",
+      ...new Set(
+        salaryData.map(
+          (item) => item.location
+        )
+      )
+    ];
+
   return (
     <div>
 
@@ -56,27 +75,41 @@ export default function SalaryTable() {
         />
 
         <select
-          value={level}
-          onChange={(e) =>
-            setLevel(e.target.value)
-          }
-          className="p-4 rounded-lg bg-slate-900 border border-slate-800"
-        >
-          <option>All</option>
-          <option>L4</option>
-          <option>L63</option>
+            value={level}
+            onChange={(e)=>
+              setLevel(e.target.value)
+            }
+            className="p-4 rounded-lg bg-slate-900 border border-slate-800"
+          >
+
+          {uniqueLevels.map((item)=>(
+          <option
+          key={item}
+          value={item}
+          >
+          {item}
+          </option>
+          ))}
+
         </select>
 
         <select
           value={location}
-          onChange={(e) =>
-            setLocation(e.target.value)
+          onChange={(e)=>
+          setLocation(e.target.value)
           }
           className="p-4 rounded-lg bg-slate-900 border border-slate-800"
-        >
-          <option>All</option>
-          <option>Bangalore</option>
-          <option>Hyderabad</option>
+          >
+
+          {uniqueLocations.map((item)=>(
+          <option
+          key={item}
+          value={item}
+          >
+          {item}
+          </option>
+          ))}
+
         </select>
 
         <select
