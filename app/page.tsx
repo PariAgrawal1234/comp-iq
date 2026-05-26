@@ -48,17 +48,17 @@ export default function Home() {
 
           <StatCard
             title="Companies"
-            value="500+"
+            value="12+"
           />
 
           <StatCard
             title="Salary Entries"
-            value="50K+"
+            value="30+"
           />
 
           <StatCard
             title="Locations"
-            value="120+"
+            value="5+"
           />
 
         </div>
