@@ -12,7 +12,8 @@ export default function Home() {
           <span className="px-4 py-2 rounded-full bg-slate-800 text-sm">
             Compensation Intelligence Platform
           </span>
-
+<br />
+<br />
           <h1 className="text-5xl font-bold max-w-3xl">
             Compare compensation by level, not just job titles
           </h1>
