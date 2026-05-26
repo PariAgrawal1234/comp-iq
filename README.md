@@ -66,19 +66,21 @@ Libraries:
 
 ### Home Page
 
-![Home](./public/Home.png)
+![Home](image-2.png)
+![Home02](image-3.png)
 
 ### Salary Explorer
 
-![Salary Explorer](./image-1.png)
+![Salary Explorer](image.png)
 
 ### Compare Compensation
 
-![Compare](./public/Compare-Comps.png)
+![Compare](image-1.png)
+![Compare02](image-4.png)
 
 ### Company Details
 
-![Company Page](./image.png)
+![Company Page](image-5.png)
 
 ## Architecture Decisions
 

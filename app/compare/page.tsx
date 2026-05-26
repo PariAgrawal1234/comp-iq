@@ -1,8 +1,8 @@
 "use client";
 
-import CompChart from "@/components/charts/CompChart";
-import { salaryData } from "@/data/salaryData";
 import { useState } from "react";
+import { salaryData } from "@/data/salaryData";
+import CompChart from "@/components/charts/CompChart";
 
 export default function ComparePage() {
   const [company1, setCompany1] = useState("Google");
@@ -37,7 +37,9 @@ export default function ComparePage() {
             className="p-4 rounded-lg bg-slate-900 border border-slate-800"
           >
             {salaryData.map((item)=>(
-              <option key={item.id}>
+              <option
+                key={item.id}
+              >
                 {item.company}
               </option>
             ))}
@@ -49,7 +51,9 @@ export default function ComparePage() {
             className="p-4 rounded-lg bg-slate-900 border border-slate-800"
           >
             {salaryData.map((item)=>(
-              <option key={item.id}>
+              <option
+                key={item.id}
+              >
                 {item.company}
               </option>
             ))}
@@ -57,12 +61,18 @@ export default function ComparePage() {
 
         </div>
 
+        {data1 && data2 && (
+
+        <>
+
         <div className="overflow-hidden rounded-xl border border-slate-800">
 
           <table className="w-full">
 
             <thead className="bg-slate-900">
+
               <tr>
+
                 <th className="p-4 text-left">
                   Component
                 </th>
@@ -74,45 +84,29 @@ export default function ComparePage() {
                 <th className="p-4 text-left">
                   {company2}
                 </th>
+
               </tr>
+
             </thead>
 
             <tbody>
 
               <tr className="border-t border-slate-800">
                 <td className="p-4">Base</td>
-
-                <td className="p-4">
-                  ₹{data1?.base ? data1.base/100000 : "-"}L
-                </td>
-
-                <td className="p-4">
-                  ₹{data2?.base ? data2.base/100000 : "-"}L
-                </td>
+                <td className="p-4">₹{data1.base/100000}L</td>
+                <td className="p-4">₹{data2.base/100000}L</td>
               </tr>
 
               <tr className="border-t border-slate-800">
                 <td className="p-4">Bonus</td>
-
-                <td className="p-4">
-                  ₹{data1?.bonus ? data1.bonus/100000 : "-"}L
-                </td>
-
-                <td className="p-4">
-                  ₹{data2?.bonus? data2.bonus/100000 : "-"}L
-                </td>
+                <td className="p-4">₹{data1.bonus/100000}L</td>
+                <td className="p-4">₹{data2.bonus/100000}L</td>
               </tr>
 
               <tr className="border-t border-slate-800">
                 <td className="p-4">Equity</td>
-
-                <td className="p-4">
-                  ₹{data1?.base ? data1.base/100000 : "-"}L
-                </td>
-
-                <td className="p-4">
-                  ₹{data2?.equity ? data2.equity/100000 : "-"}L
-                </td>
+                <td className="p-4">₹{data1.equity/100000}L</td>
+                <td className="p-4">₹{data2.equity/100000}L</td>
               </tr>
 
               <tr className="border-t border-slate-800 font-bold">
@@ -121,85 +115,137 @@ export default function ComparePage() {
                 </td>
 
                 <td className="p-4">
-                  ₹{data1?.totalComp
- ? `${data1.totalComp / 100000}L`
- : "-"}
+                  ₹{data1.totalComp/100000}L
                 </td>
 
                 <td className="p-4">
-                  ₹{data2?.totalComp
- ? `${data2.totalComp / 100000}L`
- : "-"}
+                  ₹{data2.totalComp/100000}L
                 </td>
+
               </tr>
 
-              {data1 && data2 && (
-                <tr className="border-t border-slate-800">
+              <tr className="border-t border-slate-800">
 
-                  <td className="p-4">
-                    Difference
-                  </td>
+                <td className="p-4">
+                  Difference
+                </td>
 
-                  <td
-                    colSpan={2}
-                    className="p-4 text-blue-400 font-semibold"
-                  >
-                    {(
-                      (
-                        Math.abs(
-                          data1.totalComp - data2.totalComp
-                        ) /
-                        Math.min(
-                          data1.totalComp,
-                          data2.totalComp
-                        )
-                      ) * 100
-                    ).toFixed(1)}
-                    % difference
-                  </td>
+                <td
+                  colSpan={2}
+                  className="p-4 text-blue-400 font-semibold"
+                >
+                  {(
+                    (
+                      Math.abs(
+                        data1.totalComp -
+                        data2.totalComp
+                      )/
+                      Math.min(
+                        data1.totalComp,
+                        data2.totalComp
+                      )
+                    )*100
+                  ).toFixed(1)}
 
-                </tr>
-              )}
+                  % difference
+
+                </td>
+
+              </tr>
 
             </tbody>
 
           </table>
 
-          {data1 && data2 && (
-  <CompChart
-    company1={company1}
-    company2={company2}
-    value1={data1.totalComp}
-    value2={data2.totalComp}
-  />
-)}
-
-{data1 && data2 && (
-  <div className="bg-slate-900 border border-slate-800 rounded-xl p-6 mt-8">
-
-    <h2 className="text-xl font-semibold mb-4">
-      Compensation Insight
-    </h2>
-
-    <p className="text-slate-300">
-
-      {data1.totalComp > data2.totalComp
-        ? `${company1} compensation is ${(
-            ((data1.totalComp - data2.totalComp) /
-              data2.totalComp) *
-            100
-          ).toFixed(1)}% higher than ${company2}, primarily driven by stronger equity allocation.`
-        : `${company2} compensation is ${(
-            ((data2.totalComp - data1.totalComp) /
-              data1.totalComp) *
-            100
-          ).toFixed(1)}% higher than ${company1}, primarily driven by compensation structure differences.`}
-
-    </p>
-
-  </div>
-)}
         </div>
+
+
+        <CompChart
+          company1={company1}
+          company2={company2}
+          value1={data1.totalComp}
+          value2={data2.totalComp}
+        />
+
+
+        <div className="grid md:grid-cols-2 gap-6 mt-8">
+
+          <div className="bg-slate-900 p-6 rounded-xl">
+
+            <h3 className="font-bold mb-2">
+              Higher Equity Allocation
+            </h3>
+
+            <p className="text-slate-400">
+
+              {data1.equity > data2.equity
+                ? company1
+                : company2}
+
+              {" "}offers stronger equity compensation.
+
+            </p>
+
+          </div>
+
+          <div className="bg-slate-900 p-6 rounded-xl">
+
+            <h3 className="font-bold mb-2">
+              Base Salary Leader
+            </h3>
+
+            <p className="text-slate-400">
+
+              {data1.base > data2.base
+                ? company1
+                : company2}
+
+              {" "}has higher base compensation.
+
+            </p>
+
+          </div>
+
+        </div>
+
+
+        <div className="bg-slate-900 border border-slate-800 rounded-xl p-6 mt-8">
+
+          <h2 className="text-xl font-semibold mb-4">
+            Compensation Insight
+          </h2>
+
+          <p className="text-slate-300">
+
+            {data1.totalComp > data2.totalComp
+            ? `${company1} compensation is ${(
+              (
+                (
+                  data1.totalComp -
+                  data2.totalComp
+                )/
+                data2.totalComp
+              )*100
+            ).toFixed(1)}% higher than ${company2}.`
+
+            : `${company2} compensation is ${(
+              (
+                (
+                  data2.totalComp -
+                  data1.totalComp
+                )/
+                data1.totalComp
+              )*100
+            ).toFixed(1)}% higher than ${company1}.`
+            }
+
+          </p>
+
+        </div>
+
+        </>
+
+        )}
 
       </div>
 
